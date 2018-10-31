@@ -1,14 +1,21 @@
 package data.mongo.reader;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.logging.log4j.Logger;
+import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.QueryResults;
+import org.springframework.context.annotation.Bean;
 
 import com.mongodb.MongoCredential;
+import data.api.entities.Rule;
+
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;
 
@@ -55,5 +62,26 @@ public class MongoDBReader {
 		
 		
 	}
-
+	
+	public List<Rule> getIOTData() {
+		List<Rule> rules = mongoDatastore.find(Rule.class).asList();
+		return rules;
+	}
+	
+	public List<Rule> getRules(String ruleGroupName) {
+		  List<Rule> rules = mongoDatastore.find(Rule.class).field("RULE_KPI_GROUPNAME").equalIgnoreCase(ruleGroupName).asList();
+		  return rules;
+	}
+	   
+	public Rule getRule(String ruleGroupName,String ruleName) {
+		  Rule rule = mongoDatastore.find(Rule.class).field("RULE_KPI_GROUPNAME").equalIgnoreCase(ruleGroupName).field("RULE_KPI_NAME").equalIgnoreCase(ruleName).get();
+		  return rule;  
+		
+	}
+	   
+	public boolean evaluateRule(String ruleGroupName,String ruleName,Map<String,String> inputMap) {
+			//to be implemented
+			return true;
+	}
+	
 }

@@ -1,9 +1,21 @@
-package data.api.iot.model;
+package data.api.entities;
 
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Property;
+
+@Embedded
 public class RuleAction {
+	
+	@Property("BCC")
 	private String bcc;
+	
+	@Property("CC")
 	private String cc;
+	
+	@Property("NAME")
 	private String name;
+	
+	@Property("TO")
 	private String to;
 
 	public RuleAction() {

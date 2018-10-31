@@ -1,34 +1,76 @@
-package data.api.iot.model;
+package data.api.entities;
 
-import java.util.Date;
+import java.time.Instant;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.converters.TimestampConverter;
+
+
+@Entity(value="rulesengine")
 public class Rule {
-	private int Id;
+	
+	@Id
+	private ObjectId id;
+	
+	@Property("RULE_KPI_GROUPNAME")
 	private String ruleGroupName;
+	
+	@Property("RULE_KPI_NAME")
 	private String ruleName;
-	private String masterType;
+	
+	@Property("KPI_EXPRESSION")
 	private String expression;
-	private String ruleCondition;
-	private RuleAction[] actions;
-	private String createdBy;
-	private Date whenCreated;
-	private String updatedBy;
-	private Date whenUpdated;
-	private String isDocumentDeleted;
-	private Date ruleStartDate;
 
+	
+
+	/*
+	@Property("MASTER_TYPE")
+	private String masterType;
+	
+	@Property("RULE_CONDITION")
+	private String ruleCondition;
+	
+	@Embedded
+	private RuleAction[] actions;
+	
+	
+	@Property("CREATEDBY")
+	private String createdBy;
+	
+	@Property("WHENCREATED")
+	private TimestampConverter whenCreated;
+	
+	@Property("UPDATEDBY")
+	private String updatedBy;
+	
+	@Property("WHENUPDATED")
+	private TimestampConverter whenUpdated;
+	
+	@Property("isDocumentDeleted")
+	private String isDocumentDeleted;
+	
+	@Property("RULE_KPI_START_DATE")
+	private TimestampConverter ruleStartDate;
+
+  */
 	public Rule() {
 
 	}
 
-	public Rule(int id, String ruleGroupName, String ruleName, String masterType, String expression,
-			String ruleCondition, RuleAction[] rulesaction, String createdBy, Date whenCreated, String updatedBy,
-			Date whenUpdated, String isDocumentDeleted, Date ruleStartDate) {
-		this.Id = id;
+	public Rule(ObjectId id, String ruleGroupName, String ruleName, String masterType, String expression,
+			String ruleCondition, RuleAction[] rulesaction, String createdBy, TimestampConverter whenCreated, String updatedBy,
+			TimestampConverter whenUpdated, String isDocumentDeleted, TimestampConverter ruleStartDate) {
+		this.id = id;
 		this.ruleGroupName = ruleGroupName;
 		this.ruleName = ruleName;
-		this.masterType = masterType;
 		this.expression = expression;
+		
+		/*
+		this.masterType = masterType;
 		this.ruleCondition = ruleCondition;
 		this.actions = rulesaction;
 		this.createdBy = createdBy;
@@ -37,14 +79,15 @@ public class Rule {
 		this.whenUpdated = whenUpdated;
 		this.isDocumentDeleted = isDocumentDeleted;
 		this.ruleStartDate = ruleStartDate;
+		*/
 	}
 
-	public int getId() {
-		return Id;
+	public ObjectId getId() {
+		return id;
 	}
 
-	public void setId(int id) {
-		Id = id;
+	public void setId(ObjectId id) {
+		this.id = id;
 	}
 
 	public String getRuleGroupName() {
@@ -63,20 +106,21 @@ public class Rule {
 		this.ruleName = ruleName;
 	}
 
-	public String getMasterType() {
-		return masterType;
-	}
-
-	public void setMasterType(String masterType) {
-		this.masterType = masterType;
-	}
-
 	public String getExpression() {
 		return expression;
 	}
 
 	public void setExpression(String expression) {
 		this.expression = expression;
+	}
+	
+	/*
+	public String getMasterType() {
+		return masterType;
+	}
+
+	public void setMasterType(String masterType) {
+		this.masterType = masterType;
 	}
 
 	public String getRuleCondition() {
@@ -87,6 +131,7 @@ public class Rule {
 		this.ruleCondition = ruleCondition;
 	}
 
+	
 	public RuleAction[] getActions() {
 		return actions;
 	}
@@ -94,6 +139,7 @@ public class Rule {
 	public void setActions(RuleAction[] actions) {
 		this.actions = actions;
 	}
+	
 
 	public String getCreatedBy() {
 		return createdBy;
@@ -103,11 +149,11 @@ public class Rule {
 		this.createdBy = createdBy;
 	}
 
-	public Date getWhenCreated() {
+	public TimestampConverter getWhenCreated() {
 		return whenCreated;
 	}
 
-	public void setWhenCreated(Date whenCreated) {
+	public void setWhenCreated(TimestampConverter whenCreated) {
 		this.whenCreated = whenCreated;
 	}
 
@@ -119,11 +165,11 @@ public class Rule {
 		this.updatedBy = updatedBy;
 	}
 
-	public Date getWhenUpdated() {
+	public TimestampConverter getWhenUpdated() {
 		return whenUpdated;
 	}
 
-	public void setWhenUpdated(Date whenUpdated) {
+	public void setWhenUpdated(TimestampConverter whenUpdated) {
 		this.whenUpdated = whenUpdated;
 	}
 
@@ -135,12 +181,14 @@ public class Rule {
 		this.isDocumentDeleted = isDocumentDeleted;
 	}
 
-	public Date getRuleStartDate() {
+	public TimestampConverter getRuleStartDate() {
 		return ruleStartDate;
 	}
 
-	public void setRuleStartDate(Date ruleStartDate) {
+	public void setRuleStartDate(TimestampConverter ruleStartDate) {
 		this.ruleStartDate = ruleStartDate;
 	}
+	
+	*/
 
 }
