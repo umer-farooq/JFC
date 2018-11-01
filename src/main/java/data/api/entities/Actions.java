@@ -1,10 +1,11 @@
 package data.api.entities;
 
 import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Property;
 
 @Embedded
-public class RuleAction {
+public class Actions {
 	
 	@Property("BCC")
 	private String bcc;
@@ -18,11 +19,11 @@ public class RuleAction {
 	@Property("TO")
 	private String to;
 
-	public RuleAction() {
+	public Actions() {
 
 	}
 
-	public RuleAction(String bcc, String cc, String name, String to) {
+	public Actions(String bcc, String cc, String name, String to) {
           this.bcc = bcc;
           this.cc = cc;
           this.name = name;

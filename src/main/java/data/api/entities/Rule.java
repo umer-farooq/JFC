@@ -1,14 +1,13 @@
 package data.api.entities;
 
 import java.time.Instant;
+import java.util.List;
 
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.converters.TimestampConverter;
-
 
 @Entity(value="rulesengine")
 public class Rule {
@@ -26,60 +25,68 @@ public class Rule {
 	private String expression;
 
 	
-
-	/*
 	@Property("MASTER_TYPE")
 	private String masterType;
 	
 	@Property("RULE_CONDITION")
 	private String ruleCondition;
-	
-	@Embedded
-	private RuleAction[] actions;
-	
-	
+
 	@Property("CREATEDBY")
 	private String createdBy;
+
 	
 	@Property("WHENCREATED")
-	private TimestampConverter whenCreated;
+	private String whenCreated;
+	
 	
 	@Property("UPDATEDBY")
 	private String updatedBy;
 	
 	@Property("WHENUPDATED")
-	private TimestampConverter whenUpdated;
+	private String whenUpdated;
+	
 	
 	@Property("isDocumentDeleted")
 	private String isDocumentDeleted;
 	
 	@Property("RULE_KPI_START_DATE")
-	private TimestampConverter ruleStartDate;
+	private String ruleStartDate;
 
-  */
+	
+	@Embedded
+	private List<Actions> actions;
+	
+
+  
 	public Rule() {
 
 	}
 
 	public Rule(ObjectId id, String ruleGroupName, String ruleName, String masterType, String expression,
-			String ruleCondition, RuleAction[] rulesaction, String createdBy, TimestampConverter whenCreated, String updatedBy,
-			TimestampConverter whenUpdated, String isDocumentDeleted, TimestampConverter ruleStartDate) {
+			String ruleCondition, List<Actions> rulesaction, String createdBy, String whenCreated, String updatedBy,
+			String whenUpdated, String isDocumentDeleted, String ruleStartDate) {
 		this.id = id;
 		this.ruleGroupName = ruleGroupName;
 		this.ruleName = ruleName;
 		this.expression = expression;
 		
-		/*
+		
 		this.masterType = masterType;
 		this.ruleCondition = ruleCondition;
-		this.actions = rulesaction;
+		
 		this.createdBy = createdBy;
+		
 		this.whenCreated = whenCreated;
+		
+		
 		this.updatedBy = updatedBy;
 		this.whenUpdated = whenUpdated;
+		
 		this.isDocumentDeleted = isDocumentDeleted;
 		this.ruleStartDate = ruleStartDate;
-		*/
+		
+		this.actions = rulesaction;
+		
 	}
 
 	public ObjectId getId() {
@@ -114,7 +121,7 @@ public class Rule {
 		this.expression = expression;
 	}
 	
-	/*
+	
 	public String getMasterType() {
 		return masterType;
 	}
@@ -131,16 +138,8 @@ public class Rule {
 		this.ruleCondition = ruleCondition;
 	}
 
+		
 	
-	public RuleAction[] getActions() {
-		return actions;
-	}
-
-	public void setActions(RuleAction[] actions) {
-		this.actions = actions;
-	}
-	
-
 	public String getCreatedBy() {
 		return createdBy;
 	}
@@ -149,14 +148,17 @@ public class Rule {
 		this.createdBy = createdBy;
 	}
 
-	public TimestampConverter getWhenCreated() {
+	
+	public String getWhenCreated() {
 		return whenCreated;
 	}
 
-	public void setWhenCreated(TimestampConverter whenCreated) {
+	
+	public void setWhenCreated(String whenCreated) {
 		this.whenCreated = whenCreated;
 	}
 
+	
 	public String getUpdatedBy() {
 		return updatedBy;
 	}
@@ -165,14 +167,15 @@ public class Rule {
 		this.updatedBy = updatedBy;
 	}
 
-	public TimestampConverter getWhenUpdated() {
+	public String getWhenUpdated() {
 		return whenUpdated;
 	}
 
-	public void setWhenUpdated(TimestampConverter whenUpdated) {
+	public void setWhenUpdated(String whenUpdated) {
 		this.whenUpdated = whenUpdated;
 	}
 
+	
 	public String isDocumentDeleted() {
 		return isDocumentDeleted;
 	}
@@ -181,14 +184,24 @@ public class Rule {
 		this.isDocumentDeleted = isDocumentDeleted;
 	}
 
-	public TimestampConverter getRuleStartDate() {
+	public String getRuleStartDate() {
 		return ruleStartDate;
 	}
 
-	public void setRuleStartDate(TimestampConverter ruleStartDate) {
+	public void setRuleStartDate(String ruleStartDate) {
 		this.ruleStartDate = ruleStartDate;
 	}
+
 	
-	*/
+	public List<Actions> getActions() {
+		return actions;
+	}
+
+	
+	public void setActions(List<Actions> actions) {
+		this.actions = actions;
+	}
+
+	
 
 }
