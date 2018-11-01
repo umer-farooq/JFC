@@ -1,12 +1,11 @@
-package data.api.iot.repository;
+package data.api.rules.respository;
 
 import java.util.List;
 import java.util.Map;
-import data.api.entities.Rule;
 
-public interface IOTDataRepository {
-	
-	List<Rule> getIOTData() throws Exception;
+import data.api.rules.entities.Rule;
+
+public interface RulesDataRepository {
 	
 	List<Rule> getRules(String ruleGroupName) throws Exception;
 	

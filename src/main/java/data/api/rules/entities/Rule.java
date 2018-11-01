@@ -1,15 +1,13 @@
-package data.api.entities;
+package data.api.rules.entities;
 
-import java.time.Instant;
 import java.util.List;
-
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value="rulesengine")
+@Entity(value="rules")
 public class Rule {
 	
 	@Id

@@ -1,4 +1,4 @@
-package data.api.iot.controller;
+package data.api.rules.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -8,24 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import data.api.entities.Rule;
-import data.api.iot.services.IOTDataService;
+
+import data.api.rules.entities.Rule;
+import data.api.rules.services.RulesDataService;
 
 @RestController
-public class IOTDataController {
+@RequestMapping(value="/JFC2/Rules")
+public class RulesDataController {
 
-	
 	@Autowired
-	private IOTDataService iotDataService;
-	
-	//change return type according to actual object
-	@RequestMapping(value="/getIOTData", method = RequestMethod.POST)
-	public void getIOTData()
-	{
-		//parse params and call MongoDBReader.getData to get the records and return data
-		
-		iotDataService.getIOTData();
-	}
+	private RulesDataService iotDataService;
 	
 	@RequestMapping(value="/getRules/{ruleGrpName}")
 	public List<Rule> getRules(@PathVariable String ruleGrpName)

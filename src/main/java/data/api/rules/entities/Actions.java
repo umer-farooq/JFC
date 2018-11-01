@@ -1,4 +1,4 @@
-package data.api.entities;
+package data.api.rules.entities;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Entity;

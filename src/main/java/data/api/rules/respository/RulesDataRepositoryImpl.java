@@ -1,4 +1,4 @@
-package data.api.iot.repository;
+package data.api.rules.respository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,26 +15,19 @@ import org.springframework.boot.autoconfigure.mongo.MongoProperties;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import data.api.entities.Rule;
-import data.api.iot.services.IOTDataService;
+import data.api.rules.entities.Rule;
+import data.api.rules.services.RulesDataService;
 import data.mongo.reader.MongoDBReader;
 
 @Repository
-public class IOTDataRepositoryImpl implements IOTDataRepository{
+public class RulesDataRepositoryImpl implements RulesDataRepository{
 
 
 	@Autowired
 	private MongoProperties configuration;
 	MongoDBReader mongoDBReader = new MongoDBReader();
-	private static final Logger IOTDataDAOLogger = LogManager.getLogger(IOTDataRepositoryImpl.class);	
+	private static final Logger IOTDataDAOLogger = LogManager.getLogger(RulesDataRepositoryImpl.class);	
 	
-	   public List<Rule> getIOTData() throws Exception {
-		   List<Rule> rules = new ArrayList<Rule>();
-		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),IOTDataDAOLogger);
-		   rules = mongoDBReader.getIOTData();
-		   return rules;
-	   }
-
 	   public List<Rule> getRules(String ruleGroupName) throws Exception {
 		   List<Rule> rules = new ArrayList<Rule>();
 		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),IOTDataDAOLogger);

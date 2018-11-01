@@ -14,7 +14,8 @@ import org.mongodb.morphia.query.QueryResults;
 import org.springframework.context.annotation.Bean;
 
 import com.mongodb.MongoCredential;
-import data.api.entities.Rule;
+
+import data.api.rules.entities.Rule;
 
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientURI;

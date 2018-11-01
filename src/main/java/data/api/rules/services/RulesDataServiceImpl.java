@@ -1,4 +1,4 @@
-package data.api.iot.services;
+package data.api.rules.services;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,33 +6,17 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import data.api.entities.Rule;
-import data.api.iot.repository.IOTDataRepository;;
+
+import data.api.rules.entities.Rule;
+import data.api.rules.respository.RulesDataRepository;;
 
 
 @Service
-public class IOTDataService {
+public class RulesDataServiceImpl implements RulesDataService{
    
 	@Autowired
-	private IOTDataRepository iotDataRepository;
+	private RulesDataRepository iotDataRepository;
 	
-	
-	public IOTDataService() {
-		
-	}
-	
-	public List<Rule> getIOTData(){
-		List<Rule> rules = new ArrayList<Rule>();
-		try {
-			rules = iotDataRepository.getIOTData();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return rules;
-		
-	}
 	
 	public List<Rule> getRules(String ruleGroupName) {
 		List<Rule> rules = new ArrayList<Rule>();
