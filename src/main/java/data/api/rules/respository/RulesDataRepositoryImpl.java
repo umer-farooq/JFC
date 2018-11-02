@@ -26,18 +26,18 @@ public class RulesDataRepositoryImpl implements RulesDataRepository{
 	@Autowired
 	private MongoProperties configuration;
 	MongoDBReader mongoDBReader = new MongoDBReader();
-	private static final Logger IOTDataDAOLogger = LogManager.getLogger(RulesDataRepositoryImpl.class);	
+	private static final Logger RulesDataDAOLogger = LogManager.getLogger(RulesDataRepositoryImpl.class);	
 	
 	   public List<Rule> getRules(String ruleGroupName) throws Exception {
 		   List<Rule> rules = new ArrayList<Rule>();
-		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),IOTDataDAOLogger);
+		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),RulesDataDAOLogger);
 		   rules = mongoDBReader.getRules(ruleGroupName);
 		   return rules;	
 	   }
 	   
 	   public Rule getRule(String ruleGroupName,String ruleName) throws Exception {
 		   Rule rule = new Rule();
-		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),IOTDataDAOLogger);
+		   mongoDBReader.prepareConnection(configuration.getUri(),configuration.getDatabase(),configuration.getUsername(), configuration.getPassword().toString(),RulesDataDAOLogger);
 	       rule = mongoDBReader.getRule(ruleGroupName,ruleName);
 		   return rule;	
 	   }
