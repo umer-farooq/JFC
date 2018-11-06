@@ -1,5 +1,6 @@
 package data.api.rules.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
@@ -52,7 +53,7 @@ public class Rule {
 
 	
 	@Embedded
-	private List<Actions> actions;
+	private List<Actions> ACTION = new ArrayList<Actions>();
 	
 
   
@@ -61,7 +62,7 @@ public class Rule {
 	}
 
 	public Rule(ObjectId id, String ruleGroupName, String ruleName, String masterType, String expression,
-			String ruleCondition, List<Actions> rulesaction, String createdBy, String whenCreated, String updatedBy,
+			String ruleCondition, List<Actions> ACTION, String createdBy, String whenCreated, String updatedBy,
 			String whenUpdated, String isDocumentDeleted, String ruleStartDate) {
 		this.id = id;
 		this.ruleGroupName = ruleGroupName;
@@ -83,7 +84,7 @@ public class Rule {
 		this.isDocumentDeleted = isDocumentDeleted;
 		this.ruleStartDate = ruleStartDate;
 		
-		this.actions = rulesaction;
+		this.ACTION = ACTION;
 		
 	}
 
@@ -192,12 +193,12 @@ public class Rule {
 
 	
 	public List<Actions> getActions() {
-		return actions;
+		return ACTION;
 	}
 
 	
-	public void setActions(List<Actions> actions) {
-		this.actions = actions;
+	public void setActions(List<Actions> ACTION) {
+		this.ACTION = ACTION;
 	}
 
 	

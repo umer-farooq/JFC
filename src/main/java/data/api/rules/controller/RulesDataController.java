@@ -17,24 +17,24 @@ import data.api.rules.services.RulesDataService;
 public class RulesDataController {
 
 	@Autowired
-	private RulesDataService iotDataService;
+	private RulesDataService rulesDataService;
 	
 	@RequestMapping(value="/getRules/{ruleGrpName}")
 	public List<Rule> getRules(@PathVariable String ruleGrpName)
 	{
-		return iotDataService.getRules(ruleGrpName);
+		return rulesDataService.getRules(ruleGrpName);
 	}
 	
 	@RequestMapping(value="/getRule/{ruleGrpName}/{ruleName}")
 	public Rule getRule(@PathVariable String ruleGrpName,@PathVariable String ruleName)
 	{
-		return iotDataService.getRule(ruleGrpName,ruleName);	
+		return rulesDataService.getRule(ruleGrpName,ruleName);	
 	}
 	
 	@RequestMapping(value="/evaluateRule/{ruleGrpName}/{ruleName}/{inputMap}")
 	public boolean evaluateRule(@PathVariable String ruleGrpName,@PathVariable String ruleName,@PathVariable Map<String,String> inputMap)
 	{
-		return iotDataService.evaluateRule(ruleGrpName,ruleName,inputMap);	
+		return rulesDataService.evaluateRule(ruleGrpName,ruleName,inputMap);	
 	}
 	
 }

@@ -1,33 +1,29 @@
 package data.api.iot.entities;
 
+import org.mongodb.morphia.annotations.Embedded;
+
+@Embedded
 public class CustomerData {	
-	private String pro;
-	private String ver;
+	
+	@Embedded
+	private Alr alr;
 	
 	public CustomerData() {
 		
 	}
 	
-	public CustomerData(String pro,String ver) {
-		this.pro = pro;
-		this.ver = ver;
+    public CustomerData(Alr alr) {
+		this.alr = alr;
 	}
 
-	public String getPro() {
-		return pro;
+	public Alr getAlr() {
+		return alr;
 	}
 
-	public void setPro(String pro) {
-		this.pro = pro;
+	public void setAlr(Alr alr) {
+		this.alr = alr;
 	}
-
-	public String getVer() {
-		return ver;
-	}
-
-	public void setVer(String ver) {
-		this.ver = ver;
-	}
+	
 	
 	
 }

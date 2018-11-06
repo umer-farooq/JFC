@@ -1,28 +1,59 @@
 package data.api.gmao.entites;
 
-import org.bson.types.ObjectId;
+import java.util.Date;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+
+@Entity("gmaos")
 public class Gmao {
 
+	@Id
 	private ObjectId id;
+	
+	@Property("master_data_type")
 	private String masterDataType;
+	
+	@Property("equipment_ol")
 	private String equipmentOl;
+	
+	@Property("equipment_no")
 	private String equipmentNo;
+	
+	@Property("equipment_group")
 	private String equipmentGroup;
+	
+	@Property("equipment_group_description")
 	private String equipmentGroupDescription;
+	
+	@Property("site_id")
 	private String siteId;
+	
+	@Property("factory_id")
 	private String factoryId;
+	
+	@Property("createdby")
 	private String createdBy;
-	private String whenCreated;
+	
+	@Property("whencreated")
+	private Date whenCreated;
+	
+	@Property("updatedby")
 	private String updatedBy;
+	
+	@Property("whenupdated")
 	private String whenUpdated;
+	
+	@Property("_class")
 	private String className;
 	
 	public Gmao() {
 		
 	}
 	
-	public Gmao(ObjectId id, String masterDataType, String equipmentOl,String equipmentNo,String equipmentGroup,String equipmentGroupDescription,String siteId,String factoryId,String createdBy,String whenCreated,String updatedBy,String whenUpdated,String className) {
+	public Gmao(ObjectId id, String masterDataType, String equipmentOl,String equipmentNo,String equipmentGroup,String equipmentGroupDescription,String siteId,String factoryId,String createdBy,Date whenCreated,String updatedBy,String whenUpdated,String className) {
           this.id = id;
           this.masterDataType =masterDataType;
           this.equipmentOl = equipmentOl;
@@ -110,11 +141,11 @@ public class Gmao {
 		this.createdBy = createdBy;
 	}
 
-	public String getWhenCreated() {
+	public Date getWhenCreated() {
 		return whenCreated;
 	}
 
-	public void setWhenCreated(String whenCreated) {
+	public void setWhenCreated(Date whenCreated) {
 		this.whenCreated = whenCreated;
 	}
 
@@ -141,7 +172,5 @@ public class Gmao {
 	public void setClassName(String className) {
 		this.className = className;
 	}
-	
-	
 	
 }

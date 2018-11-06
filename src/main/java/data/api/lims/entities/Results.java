@@ -1,19 +1,30 @@
 package data.api.lims.entities;
 
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Property;
+
+@Embedded
 public class Results {
 	
+	@Property("name")
 	private String name;
-	private String unit;
+	
+	@Property("units")
+	private String units;
+	
+	@Property("type")
 	private String type;
+	
+	@Property("value")
 	private String value;
 
 	public Results() {
 		
 	}
 	
-	public Results(String name, String unit, String type, String value) {
+	public Results(String name, String units, String type, String value) {
 		this.name = name;
-		this.unit = unit;
+		this.units = units;
 		this.type = type;
 		this.value = value;
 	}
@@ -26,12 +37,12 @@ public class Results {
 		this.name = name;
 	}
 
-	public String getUnit() {
-		return unit;
+	public String getUnits() {
+		return units;
 	}
 
-	public void setUnit(String unit) {
-		this.unit = unit;
+	public void setUnits(String units) {
+		this.units = units;
 	}
 
 	public String getType() {

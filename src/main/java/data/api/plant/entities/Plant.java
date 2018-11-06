@@ -1,11 +1,13 @@
 package data.api.plant.entities;
 
+import java.util.Date;
+
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 
-@Entity(value="plant")
+@Entity(value="plants")
 public class Plant {
     
 	@Id
@@ -18,7 +20,7 @@ public class Plant {
 	private String itemQuality;
 	
 	@Property("ITEM_TIMESTAMP")
-	private String itemTimeStamp;
+	private Date itemTimeStamp;
 	
 	@Property("ITEM_VALUE")
 	private String itemValue;
@@ -28,7 +30,7 @@ public class Plant {
 		
 	}
 	
-	public Plant(ObjectId objectId,String itemId,String itemQuality,String itemTimeStamp,String itemValue) {
+	public Plant(ObjectId objectId,String itemId,String itemQuality,Date itemTimeStamp,String itemValue) {
 		this.id = objectId;
 		this.itemId = itemId;
 		this.itemQuality = itemQuality;
@@ -60,11 +62,11 @@ public class Plant {
 		this.itemQuality = itemQuality;
 	}
 
-	public String getItemTimeStamp() {
+	public Date getItemTimeStamp() {
 		return itemTimeStamp;
 	}
 
-	public void setItemTimeStamp(String itemTimeStamp) {
+	public void setItemTimeStamp(Date itemTimeStamp) {
 		this.itemTimeStamp = itemTimeStamp;
 	}
 

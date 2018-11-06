@@ -1,5 +1,8 @@
 package data.api.iot.entities;
 
+import org.mongodb.morphia.annotations.Embedded;
+
+@Embedded
 public class Payload {
 
 	private String temp;

@@ -1,23 +1,47 @@
 package data.api.lims.entities;
 
-import org.bson.types.ObjectId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Property;
+
+@Entity("lims")
 public class Lims {
 
+	@Id
 	private ObjectId id;
+	
+	@Property("site")
 	private String siteId;
+	
+	@Property("factory")
 	private String factory;
+	
+	@Property("workshop")
 	private String workshop;
+	
+	@Property("product_line")
 	private String productline;
-	private String itemTimeStamp;
-	private Results results;
+	
+	@Property("ITEM_TIMESTAMP")
+	private Date itemTimeStamp;
+	
+	@Embedded
+	private List<Results> results = new ArrayList<Results>();
+	
+	@Property("_class")
 	private String className;
 	
 	public Lims() {
 		
 	}
 	
-	public Lims(ObjectId id, String siteId, String factory, String workshop, String productLine, String itemTimeStamp, Results results, String className) {
+	public Lims(ObjectId id, String siteId, String factory, String workshop, String productLine, Date itemTimeStamp, List<Results> results, String className) {
 		this.id = id;
 		this.siteId = siteId;
 		this.factory = factory;
@@ -69,19 +93,19 @@ public class Lims {
 		this.productline = productline;
 	}
 
-	public String getItemTimeStamp() {
+	public Date getItemTimeStamp() {
 		return itemTimeStamp;
 	}
 
-	public void setItemTimeStamp(String itemTimeStamp) {
+	public void setItemTimeStamp(Date itemTimeStamp) {
 		this.itemTimeStamp = itemTimeStamp;
 	}
 
-	public Results getResults() {
+	public List<Results> getResults() {
 		return results;
 	}
 
-	public void setResults(Results results) {
+	public void setResults(List<Results> results) {
 		this.results = results;
 	}
 
@@ -92,6 +116,5 @@ public class Lims {
 	public void setClassName(String className) {
 		this.className = className;
 	}
-	
 	
 }
